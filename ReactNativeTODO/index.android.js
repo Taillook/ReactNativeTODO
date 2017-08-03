@@ -1,1 +1,1 @@
-import index from './index.js';
+import index from './App/index';
