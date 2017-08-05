@@ -4,39 +4,47 @@ import {
   StyleSheet,
   Alert,
   Text,
+  ScrollView,
+  ListView,
   View
 } from 'react-native';
-import {
-  Button
-} from 'react-native-elements'
 import styles from './styles/style';
+
+import TodoList from './components/TodoList';
+import Footer from './components/Footer';
 
 export default class ReactNativeTODO extends Component {
   constructor(props) {
-      super(props);
-      this.state = {
-          my: 'hello'
-      }
-      this.onPress = this.onPress.bind(this);
+    super(props);
+
+    this.state = {
+      todos: [
+        {text: 'Learn react native'},
+        {text: 'Make a to-do app'}
+      ]
+    }
   }
 
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          {this.state.my}
-        </Text>
-        <Button
-          raised
-          onPress={this.onPress}
-          icon={{name: 'check'}}
-          title='PUSH ME!' />
+      <View style={{flex: 1}}>
+        <ScrollView
+          style={styles.base}
+        >
+          <TodoList
+            todos={this.state.todos}
+          />
+        </ScrollView>
+        <Footer
+          addTodo={this.addTodo.bind(this)}
+        />
       </View>
     );
   }
-  onPress() {
+
+  addTodo(text) {
     this.setState({
-      my: 'hello, world!'
+      todos: this.state.todos.concat([{text: text}])
     });
   }
 }
