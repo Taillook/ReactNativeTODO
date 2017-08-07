@@ -9,7 +9,6 @@ import {
   View
 } from 'react-native';
 import styles from './styles/style';
-
 import TodoList from './components/TodoList';
 import Footer from './components/Footer';
 
@@ -27,7 +26,7 @@ export default class ReactNativeTODO extends Component {
 
   render() {
     return (
-      <View style={{flex: 1}}>
+      <View style={styles.container}>
         <ScrollView
           style={styles.base}
         >
